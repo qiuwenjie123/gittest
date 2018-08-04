@@ -1,0 +1,45 @@
+1、注册一个组件并使用数据显示
+先注册组件
+Vue.component('my-article',{
+   //detail是一个形参
+   props:['detail'],
+   template:`<div>
+            <div>
+            <h1>{{detail.title}}</h1>
+            <div>
+            <span>{{detail.date}}</span>
+            <span v-show="detail.is_original">原创</span>
+            </div>
+            </div>
+            <img :src="detail.cover_url" alt="">
+            </div>`
+ });
+再注册vue实例
+ let vm = new Vue({
+   el:"#app",
+   data:{
+       articles:{
+           title:"第一节：Vue.js框架是什么，为什么选择它？",
+           date:" 2017年03月06日",
+           is_original:true,
+           cover_url:"cover.jpg"
+       }
+   }
+ });
+ 
+ 使用：
+<div id="app">    
+  <my-article :detail="articles"></my-article>
+ </div>
+ <!--detail是形参，articles是实参-->
+ 假如articles是个list类型，可以用v-for
+ <div id="app">
+    <my-article 
+            v-for="item in articles" 
+            :detail="item">
+    </my-article>
+ </div>
+
+ 
+ 
+ 2、子组件怎么向父组件传数据
