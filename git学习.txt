@@ -1,6 +1,16 @@
-设置门牌：   
-git config --global user.name "Your Name"
-git config --global user.email "email@example.com"
+﻿第一次使用的设置：
+	设置门牌：   
+	git config --global user.name "Your Name"
+	git config --global user.email "email@example.com"
+	获得密钥：
+	ssh-keygen -t rsa -C "abc@gmail.com"  //填写email地址，然后一直“回车”ok
+
+	打开本地..\.ssh\id_rsa.pub文件。此文件里面内容为刚才生成的密钥。然后把该密钥复制到github的setting/ssh中
+
+	测试是否连接成功
+	ssh -T git@github.com
+
+	提示像我这样：Hi xxx! You've successfully authenticated, but GitHub does not provide shell access. 那就说明连接成功了。
 
 初始化：   
 git init
